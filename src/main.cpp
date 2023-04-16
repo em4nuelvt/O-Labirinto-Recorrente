@@ -14,10 +14,7 @@
     inFile>>nRows>>nCols>>n;
 
     //alocando a matriz a ser trabalhada
-    matrixMaze=(char**)malloc(sizeof(char*)*nRows);
-    for(unsigned int i=0;i<nRows;i++){
-        matrixMaze[i]=(char*)malloc(sizeof(char)*nCols);
-    }
+    matrixMaze=allocateMatrix( nRows, nCols);
 
     read_Maze(matrixMaze,nRows, nCols, inFile);
     printMaze(matrixMaze, nRows,nCols);
@@ -30,7 +27,7 @@
     read_Maze(matrixMaze,nRows, nCols, inFile);
     printMaze(matrixMaze, nRows,nCols);
     cout<<endl;
-    
+
     cout<<nRows<<endl;
     cout<<nCols<<endl;
     cout<<n<<endl;

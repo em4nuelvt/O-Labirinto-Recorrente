@@ -7,6 +7,6 @@ using namespace std;
 
 char** read_Maze(char** matrixMaze, unsigned int nRows, unsigned int nCols, ifstream &inFile);
 void printMaze(char** matrixMaze,unsigned int nRows, unsigned int nCols);
-
+char**allocateMatrix(unsigned int nRows,  unsigned int nCols);
 
 #endif
