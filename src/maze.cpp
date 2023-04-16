@@ -34,7 +34,7 @@ void printMaze(char** matrixMaze,unsigned int nRows, unsigned int nCols){
     }
 }
 
-void createOutputSave(char**matrixMaze, unsigned int nRows, unsigned int nCols, unsigned int n){
+void writeOutputSave(char**matrixMaze, unsigned int nRows, unsigned int nCols, unsigned int n){
     ofstream outFile("outputFiles/Save"+to_string(n)+".dat");
     if(!outFile){
         cerr<<"Erro na criação do arquivo"<<endl;
