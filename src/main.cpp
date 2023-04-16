@@ -20,6 +20,7 @@
     for(unsigned int i=0;i<n;i++){
         read_Maze(matrixMaze,nRows, nCols, inFile);
         printMaze(matrixMaze, nRows,nCols);
+        createOutputSave(matrixMaze, nRows, nCols, i);
         cout<<endl;
     }
     // liberando a matriz alocada

@@ -9,4 +9,5 @@ char** read_Maze(char** matrixMaze, unsigned int nRows, unsigned int nCols, ifst
 void printMaze(char** matrixMaze,unsigned int nRows, unsigned int nCols);
 char**allocateMatrix(unsigned int nRows,  unsigned int nCols);
 void freeMatrix(char**matrixMaze, unsigned int nRows);
+void createOutputSave(char**matrixMaze, unsigned int nRows, unsigned int nCols, unsigned int n);
 #endif

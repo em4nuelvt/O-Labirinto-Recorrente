@@ -12,3 +12,7 @@ Após um aquecimento com um trabalho sobre caminhmaneto em matrizes, parte-se pa
 - Para essa atividade, considere selecionar um passo de cada vez de forma aleatória, ou seja, escolha um valor x,y aleatoriamente e vá para ele se possível ou descarte caso seja uma parede. Perigos não são evitados, então, se a posição escolhida for um, enfrente-o. Por fim, a intenção global do problema não é encontrar uma saída, mas sim, tentar consumir o máximo possível de itens até chegar a zerar as possibilidades desse tipo ou morrer tentando.
 
 Qual o custo computacional da sua estratégia randômica? Se mostrou uma boa alternativa de execução?
+
+
+
+# Qual a ultima coisa que eu fiz?
