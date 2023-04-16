@@ -5,6 +5,7 @@
     unsigned int n, nRows, nCols;
     char** matrixMaze;
 
+    cout<<endl;
     inFile.open("dataset/input.data",std::ios::in);
     if(!inFile){
         cerr<<"Não foi possível abrir o arquivo!"<<endl;
@@ -13,29 +14,15 @@
     //lendo a primeira liha do dataset
     inFile>>nRows>>nCols>>n;
 
-    //alocando a matriz a ser trabalhada
+    //alocando a matriz auxiliar a ser trabalhada
     matrixMaze=allocateMatrix( nRows, nCols);
 
-    read_Maze(matrixMaze,nRows, nCols, inFile);
-    printMaze(matrixMaze, nRows,nCols);
-    cout<<endl;
-
-    read_Maze(matrixMaze,nRows, nCols, inFile);
-    printMaze(matrixMaze, nRows,nCols);
-    cout<<endl;
-
-    read_Maze(matrixMaze,nRows, nCols, inFile);
-    printMaze(matrixMaze, nRows,nCols);
-    cout<<endl;
-
-    cout<<nRows<<endl;
-    cout<<nCols<<endl;
-    cout<<n<<endl;
-
+    for(unsigned int i=0;i<n;i++){
+        read_Maze(matrixMaze,nRows, nCols, inFile);
+        printMaze(matrixMaze, nRows,nCols);
+        cout<<endl;
+    }
     // liberando a matriz alocada
- /*    free(matrixMaze);
-    for(unsigned int i=0;i<nRows;i++){
-        free(matrixMaze[i]);
-    } */
+    freeMatrix(matrixMaze,nRows);
     return 0;   
 }
