@@ -1,11 +1,14 @@
 #include "maze.hpp"
 
  int main(){
+    //declaração de variáveis
     ifstream inFile;
-    unsigned int n, nRows, nCols;
+    unsigned int n, nRows, nCols,currentX, currentY, currentN;
     char** matrixMaze;
 
     cout<<endl;
+
+    //abertura do arquivo
     inFile.open("dataset/input.data",std::ios::in);
     if(!inFile){
         cerr<<"Não foi possível abrir o arquivo!"<<endl;
@@ -17,13 +20,17 @@
     //alocando a matriz auxiliar a ser trabalhada
     matrixMaze=allocateMatrix( nRows, nCols);
 
+    //lendo as matrizes e separando-as em arquivos individuais
     for(unsigned int i=0;i<n;i++){
         read_Maze(matrixMaze,nRows, nCols, inFile);
         printMaze(matrixMaze, nRows,nCols);
-        createOutputSave(matrixMaze, nRows, nCols, i);
+        writeOutputSave(matrixMaze, nRows, nCols, i);
         cout<<endl;
     }
     // liberando a matriz alocada
     freeMatrix(matrixMaze,nRows);
+
+    //fechando o arquivo aberto
+    inFile.close();
     return 0;   
 }

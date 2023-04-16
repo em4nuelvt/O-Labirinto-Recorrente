@@ -16,3 +16,4 @@ Qual o custo computacional da sua estratégia randômica? Se mostrou uma boa alt
 
 
 # Qual a ultima coisa que eu fiz?
+Fiz a função write output maze que salva a saída de uma matriz

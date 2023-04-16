@@ -46,4 +46,7 @@ void writeOutputSave(char**matrixMaze, unsigned int nRows, unsigned int nCols, u
         }
         outFile<<endl;
     }
+
+    outFile.close();
+    return;
 }
