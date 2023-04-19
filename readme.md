@@ -23,3 +23,5 @@ Hoje eu fiz as funções que definem em qual caso a posição corrente da matriz
 Fiz a função que gera qual caminho. Nessa função, deve ser chamada a função de movimentação. Entretanto as funções devem ser implementadas e substituído os couts da função "generate next move" pelas respectivas funçoes de movimentação que os couts indicam.
 as funções de movimentação ja foram declaradas no hpp e implementadas no cpp.
 é bom encontrar uma forma de testar essa movimentação e tentar startar o código para resolver seus problemas.
+
+ler o problema pra pensar na solução. escrever a ideia e so depois implementar
