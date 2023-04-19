@@ -206,3 +206,31 @@ void generateNextMove(unsigned int movementCase, unsigned int* currentX, unsigne
     }
 
 }
+void moveLeft(unsigned int* x, unsigned int* y){
+    *y=*y-1;
+}
+void moveRight(unsigned int* x, unsigned int* y){
+    *y=*y+1;
+}
+void moveUp(unsigned int* x, unsigned int* y){
+    *x=*x-1;
+}
+void moveDown(unsigned int* x, unsigned int* y){
+    *x=*x+1;
+}
+void moveLeftTopDiagonal(unsigned int* x, unsigned int* y){
+    *x=*x-1;
+    *y=*y-1;
+}
+void moveLeftBottomDiagonal(unsigned int* x, unsigned int* y){
+    *x=*x+1;
+    *y=*y-1;
+}
+void moveRightTopDiagonal(unsigned int* x, unsigned int* y){
+    *x=*x-1;
+    *y=*y+1;
+}
+void moveRightBottomDiagonal(unsigned int* x, unsigned int* y){
+    *x=*x+1;
+    *y=*y+1;
+}

@@ -17,7 +17,6 @@ void moveLeft(unsigned int* x, unsigned int* y);
 void moveRight(unsigned int* x, unsigned int* y);
 void moveUp(unsigned int* x, unsigned int* y);
 void moveDown(unsigned int* x, unsigned int* y);
-void moveUp(unsigned int* x, unsigned int* y);
 void moveLeftTopDiagonal(unsigned int* x, unsigned int* y);
 void moveLeftBottomDiagonal(unsigned int* x, unsigned int* y);
 void moveRightTopDiagonal(unsigned int* x, unsigned int* y);
