@@ -99,108 +99,148 @@ void generateNextMove(unsigned int movementCase, unsigned int* currentX, unsigne
     case 1:
         if(random1==1){
             cout<<"Movimenta Direita"<<endl;
+            moveRight(currentX, currentY);
         }else if(random1==2){
             cout<<"Movimenta Baixo"<<endl;
+            moveDown(currentX, currentY);
         }else{
             cout<<"Movimenta Diagonal Inferior Direita"<<endl;
+            moveRightBottomDiagonal(currentX, currentY);
         }
         break;
     case 2:
         if(random1==1){
             cout<<"Movimenta Esquerda"<<endl;
+            moveLeft(currentX, currentY);
         }else if(random1==2){
             cout<<"Movimenta Baixo"<<endl;
+            moveDown(currentX, currentY);
         }else{
             cout<<"Movimenta Diagonal inferior esquerda"<<endl;
+            moveLeftBottomDiagonal(currentX, currentY);
         }
         break;
     case 3:
         if(random1==1){
             cout<<"Movimenta Direita"<<endl;
+            moveRight(currentX, currentY);
         }else if(random1==2){
             cout<<"Movimenta Cima"<<endl;
+            moveUp(currentX, currentY);
         }else{
             cout<<"Movimenta Diagonal Superior Direita"<<endl;
+            moveRightTopDiagonal(currentX, currentY);
         }
         break;
     case 4:
         if(random1==1){
             cout<<"Movimenta Esquerda"<<endl;
+            moveLeft(currentX, currentY);
         }else if(random1==2){
             cout<<"Movimenta Cima"<<endl;
+            moveUp(currentX, currentY);
         }else{
             cout<<"Movimenta Diagonal Superior Esquerda"<<endl;
+            moveLeftTopDiagonal(currentX, currentY);
         }
         break;
     case 5:
         if(random2==1){
             cout<<"Movimenta Esquerda"<<endl;
+            moveLeft(currentX, currentY);
         }else if(random2==2){
             cout<<"Movimenta Diagonal Inferior Esquerda"<<endl;
+            moveLeftBottomDiagonal(currentX, currentY);
         }else if(random2==3){
             cout<<"Movimenta Baixo"<<endl;
+            moveDown(currentX, currentY);
         }else if(random2==4){
             cout<<"Movimenta Diagonal Inferior Direita"<<endl;
+            moveRightBottomDiagonal(currentX, currentY);
         }else{
             cout<<"Movimenta Direita"<<endl;
+            moveRight(currentX, currentY);
         }
         break;
     case 6:
         if(random2==1){
             cout<<"Movimenta cima "<<endl;
+            moveUp(currentX, currentY);
         }else if(random2==2){
             cout<<"Movimenta diagonal superior direita"<<endl;
+            moveRightTopDiagonal(currentX, currentY);
         }else if(random2==3){
             cout<<"Movimenta direita"<<endl;
+            moveRight(currentX, currentY);
         }else if(random2==4){
             cout<<"Movimenta diagonal inferior direita"<<endl;
+            moveRightBottomDiagonal(currentX, currentY);
         }else{
             cout<<"Movimenta baixo"<<endl;
+            moveDown(currentX, currentY);
         }
         break;
     case 7:
         if(random2==1){
             cout<<"Movimenta esquerda"<<endl;
+            moveLeft(currentX, currentY);
         }else if(random2==2){
             cout<<"Movimenta diagonal superior esquerda"<<endl;
+            moveLeftTopDiagonal(currentX, currentY);
         }else if(random2==3){
             cout<<"Movimenta cima"<<endl;
+            moveUp(currentX, currentY);
         }else if(random2==4){
             cout<<"Movimenta diagonal superior direita"<<endl;
+            moveRightTopDiagonal(currentX, currentY);
         }else{
             cout<<"Movimenta direita"<<endl;
+            moveRight(currentX, currentY);
         }
         break;
     case 8:
         if(random2==1){
             cout<<"Movimenta cima"<<endl;
+            moveUp(currentX, currentY);
         }else if(random2==2){
             cout<<"Movimenta diagonal superior esquerda"<<endl;
+            moveLeftTopDiagonal(currentX, currentY);
         }else if(random2==3){
             cout<<"Movimenta esquerda"<<endl;
+            moveLeft(currentX, currentY);
         }else if(random2==4){
             cout<<"Movimenta diagonal inferior esquerda"<<endl;
+            moveLeftBottomDiagonal(currentX,currentY);
         }else{
             cout<<"Movimenta baixo"<<endl;
+            moveDown(currentX, currentY);
         }
         break;
     case 9:
         if(random3==1){
             cout<<"Movimenta diagonal superior esquerda"<<endl;
+            moveLeftTopDiagonal(currentX, currentY);
         }else if(random3==2){
             cout<<"Movimenta cima"<<endl;
+            moveUp(currentX, currentY);
         }else if(random3==3){
             cout<<"Movimenta diagonal superior direita"<<endl;
+            moveRightTopDiagonal(currentX, currentY);
         }else if(random3==4){
             cout<<"Movimenta direita"<<endl;
+            moveRight(currentX, currentY);
         }else if(random3==5){
             cout<<"Movimenta diagonal inferior direita"<<endl;
+            moveRightBottomDiagonal(currentX, currentY);
         }else if(random3==6){
             cout<<"Movimenta baixo"<<endl;
+            moveDown(currentX, currentY);
         }else if(random3==7){
             cout<<"Movimenta diagonal inferior esquerda"<<endl;
+            moveLeftBottomDiagonal(currentX, currentY);
         }else{
             cout<<"Movimenta esquerda"<<endl;
+            moveLeft(currentX, currentY);
         }
         break;
     }
@@ -233,4 +273,38 @@ void moveRightTopDiagonal(unsigned int* x, unsigned int* y){
 void moveRightBottomDiagonal(unsigned int* x, unsigned int* y){
     *x=*x+1;
     *y=*y+1;
+}
+
+int generateIndividualMazeFiles(unsigned int* row, unsigned int* col, unsigned int* N){
+        //declaração de variáveis
+    ifstream inFile;
+    unsigned int n, nRows, nCols;
+    char** matrixMaze;
+    //abertura do arquivo
+    inFile.open("dataset/input.data",std::ios::in);
+    if(!inFile){
+        cerr<<"Não foi possível abrir o arquivo!"<<endl;
+        return 1;
+    }
+    //lendo a primeira liha do dataset
+    inFile>>nRows>>nCols>>n;
+    *row=nRows;
+    *col=nCols;
+    *N=n;
+
+    //alocando a matriz auxiliar a ser trabalhada
+    matrixMaze=allocateMatrix( nRows, nCols);
+
+    //lendo as matrizes e separando-as em arquivos individuais
+    for(unsigned int i=0;i<n;i++){
+        read_Maze(matrixMaze,nRows, nCols, inFile);
+        //printMaze(matrixMaze, nRows,nCols);
+        writeOutputSave(matrixMaze, nRows, nCols, i);
+        //cout<<endl;
+    }
+
+    freeMatrix(matrixMaze,nRows);
+    //fechando o arquivo aberto
+    inFile.close();
+    return 0;
 }
