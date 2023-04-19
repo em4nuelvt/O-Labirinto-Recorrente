@@ -17,3 +17,8 @@ Qual o custo computacional da sua estratégia randômica? Se mostrou uma boa alt
 
 # Qual a ultima coisa que eu fiz?
 Fiz a função write output maze que salva a saída de uma matriz
+
+# Qual a ultima coisa que eu fiz? #2
+Hoje eu fiz as funções que definem em qual caso a posição corrente da matriz está para gerar possíveis caminhos que a posição pode tentar explorar.
+Fiz a função que gera qual caminho. Nessa função, deve ser chamada a função de movimentação. Entretanto as funções devem ser implementadas e substituído os couts da função "generate next move" pelas respectivas funçoes de movimentação que os couts indicam.
+as funções de movimentação ja foram declaradas no hpp, so precisam ser implementadas no cpp.

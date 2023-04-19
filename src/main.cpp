@@ -3,7 +3,7 @@
  int main(){
     //declaração de variáveis
     ifstream inFile;
-    unsigned int n, nRows, nCols,currentX, currentY, currentN;
+    unsigned int n, nRows, nCols,currentX=4, currentY=4, currentN;
     char** matrixMaze;
 
     cout<<endl;
@@ -21,12 +21,19 @@
     matrixMaze=allocateMatrix( nRows, nCols);
 
     //lendo as matrizes e separando-as em arquivos individuais
-    for(unsigned int i=0;i<n;i++){
+/*     for(unsigned int i=0;i<n;i++){
         read_Maze(matrixMaze,nRows, nCols, inFile);
         printMaze(matrixMaze, nRows,nCols);
         writeOutputSave(matrixMaze, nRows, nCols, i);
         cout<<endl;
-    }
+    } */
+
+    read_Maze(matrixMaze,nRows,nCols, inFile);
+    printMaze(matrixMaze, nRows,nCols);
+    //getMovementCase(currentX, currentY, nRows, nCols);
+
+    generateNextMove(9, &currentX, &currentY);
+
     // liberando a matriz alocada
     freeMatrix(matrixMaze,nRows);
 
