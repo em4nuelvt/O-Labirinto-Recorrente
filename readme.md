@@ -25,3 +25,10 @@ as funções de movimentação ja foram declaradas no hpp e implementadas no cpp
 é bom encontrar uma forma de testar essa movimentação e tentar startar o código para resolver seus problemas.
 
 ler o problema pra pensar na solução. escrever a ideia e so depois implementar
+
+# Qual a ultima coisa que eu fiz?#3
+Hoje eu reestrturei ocódigo pra deixar a main mais limpa, coloquei as funções de movimentação sendo chamadas na função "generate next move"  e criei uma função que printa a matrix colorida em uma posição específica.
+Iniciei a função start que começa a execução do jogo, mas dentro dela por enquanto so estou testando se os movimentos gerados estão corespondendo e se estou conseguindo caminhar aleatoriamente dentro da matriz. Até então isso está funcionando. 
+
+preciso começar a validar o caminhamento, adquirir as vidas, tomar dano. ou seja,implementar as ações do jogo de acordo com a posição. testarofuncionamento de cada ação e se funcionar tentar implementar o teletransporte;
+gerar a matriz de contagem.

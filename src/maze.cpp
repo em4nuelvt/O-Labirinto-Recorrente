@@ -302,9 +302,64 @@ int generateIndividualMazeFiles(unsigned int* row, unsigned int* col, unsigned i
         writeOutputSave(matrixMaze, nRows, nCols, i);
         //cout<<endl;
     }
-
     freeMatrix(matrixMaze,nRows);
     //fechando o arquivo aberto
     inFile.close();
     return 0;
+}
+
+void printMatrixWithColor(char** matrixMaze,unsigned int nRows, unsigned int nCols,unsigned int x, unsigned int y){
+    for(unsigned int i=0;i<nRows;i++){
+        for(unsigned int j=0;j<nCols;j++){
+            if((i==x)&&(j==y)){
+                std::cout << "\033[31m"; // define a cor vermelha
+                std::cout <<"["<<matrixMaze[i][j]<<"] ";
+                std::cout << "\033[0m"; // restaura a cor padrão
+            }else{
+                cout<<"["<<matrixMaze[i][j]<<"] ";
+            }
+        }
+        cout<<endl;
+    }
+}
+
+/////////////////////////////////////////// start //////////////////////////////////////////////
+void start(unsigned int nRows, unsigned int nCols, unsigned int n){
+    char** matrixMaze;
+    unsigned int movementCase,currentX=0,currentY=0;
+
+    //alocando matriz
+    matrixMaze=allocateMatrix(nRows,nCols);
+
+    ifstream inFile;
+    inFile.open("outputFiles/Save0.dat",std::ios::in);
+    if(!inFile){
+        cerr<<"Não foi possível abrir o arquivo!"<<endl;
+        return ;
+    }
+
+    //ler matriz inicial;
+    read_Maze(matrixMaze,nRows,nCols,inFile);
+
+    //fechando o arquivo
+    inFile.close();
+
+    while(1){
+        printMatrixWithColor(matrixMaze,nRows,nCols,currentX,currentY);
+        cout<<endl;
+
+
+        
+        movementCase=getMovementCase(currentX,currentY,nRows,nCols);
+        generateNextMove(movementCase,&currentX,&currentY);
+        //Pausa na execução
+        getchar();
+        setbuf(stdin,0);
+    }
+
+
+    //liberando matriz
+    freeMatrix(matrixMaze, nRows);
+    
+
 }

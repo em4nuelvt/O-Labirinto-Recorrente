@@ -8,6 +8,6 @@
         return 0;
     }
     
-    cout<<nRows<< " "<< nCols<<" "<<n<<endl;
+    start(nRows,nCols,n);
     return 0;   
 }

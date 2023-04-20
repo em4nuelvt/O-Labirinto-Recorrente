@@ -23,5 +23,6 @@ void moveLeftBottomDiagonal(unsigned int* x, unsigned int* y);
 void moveRightTopDiagonal(unsigned int* x, unsigned int* y);
 void moveRightBottomDiagonal(unsigned int* x, unsigned int* y);
 void start(unsigned int nRows, unsigned int nCols, unsigned int n);
+void printMatrixWithColor(char** matrixMaze,unsigned int nRows, unsigned int nCols,unsigned int x, unsigned int y);
 
 #endif
