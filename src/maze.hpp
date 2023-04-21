@@ -27,5 +27,6 @@ void start(unsigned int nRows, unsigned int nCols, unsigned int n);
 void printMatrixWithColor(char** matrixMaze,unsigned int nRows, unsigned int nCols,unsigned int x, unsigned int y);
 void generateMovementMatrixSave(char** matrixWithMoves, unsigned int nRows, unsigned int nCols , unsigned int n);
 void cleanMatrix(char** matrixWithMoves, unsigned int nRows, unsigned int nCols);
-
+bool verifyWin(unsigned int currentX,unsigned int currentY,unsigned int currentN,unsigned int inicialX, unsigned int inicialY, unsigned int inicialN, unsigned int bag, bool catchedItem, unsigned int movements, unsigned int cicles);
+unsigned int getNumberPositionsNotVisited(char** matrix,unsigned int nRows, unsigned int nCols, unsigned int n);
 #endif
