@@ -494,7 +494,7 @@ void start(unsigned int nRows, unsigned int nCols, unsigned int n){
             currentMovesMatrix[currentX][currentY]='1';
             read_Maze(matrixMaze,nRows,nCols,inFile);
 
-            //fechando o arquivo
+            //fechanddo o arquivo
             inFile.close();
             inFile2.close();            
 
@@ -516,8 +516,8 @@ void start(unsigned int nRows, unsigned int nCols, unsigned int n){
             }
         }while(matrixMaze[currentX][currentY]=='#');
         //Pausa na execução
-/*         getchar();
-        std::setbuf(stdin,0);  */  
+         getchar();
+        std::setbuf(stdin,0);  
     }
 
     cout<<"------------------------------------------"<<endl;
