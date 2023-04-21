@@ -32,3 +32,8 @@ Iniciei a função start que começa a execução do jogo, mas dentro dela por e
 
 preciso começar a validar o caminhamento, adquirir as vidas, tomar dano. ou seja,implementar as ações do jogo de acordo com a posição. testarofuncionamento de cada ação e se funcionar tentar implementar o teletransporte;
 gerar a matriz de contagem.
+
+# Qual a ultima coisa que eu fiz? #4
+Implementei o teletransporte e também tratei o caso de não movimentar para paredes. 
+Testar as implementações de teletransporte, tentar ler as funções no hpp e entender a execução para então partir para as ações do jogo: consumir item, perder vidas, trabalhar com os contadores.
+Hoje estou cansado, mas amanha vai dar certo.

@@ -7,7 +7,6 @@
     if(choice== 1){
         return 0;
     }
-    
     start(nRows,nCols,n);
     return 0;   
 }

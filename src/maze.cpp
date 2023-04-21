@@ -9,6 +9,20 @@ char** allocateMatrix( unsigned int nRows,  unsigned int nCols){
     return matrixMaze;
 }
 
+char** allocateMovementSaveMatrix( unsigned int nRows,  unsigned int nCols){
+    char** matrixMaze;
+    matrixMaze= (char**)malloc(sizeof(char*)*nRows);
+    for(unsigned int i=0;i<nRows;i++){
+        matrixMaze[i]=(char*) malloc(sizeof(char)*nCols);
+    }
+    for(unsigned int i=0;i<nRows;i++){
+        for(unsigned int j=0; j<nCols;j++){
+            matrixMaze[i][j]='0';
+        }
+    }
+    return matrixMaze;
+}
+
 void freeMatrix(char**matrixMaze, unsigned int nRows){
     for(unsigned int i=0;i<nRows;i++){
         free(matrixMaze[i]);
@@ -28,7 +42,7 @@ char** read_Maze(char** matrixMaze, unsigned int nRows, unsigned int nCols, ifst
 void printMaze(char** matrixMaze,unsigned int nRows, unsigned int nCols){
     for(unsigned int i=0;i<nRows;i++){
         for(unsigned int j=0;j<nCols;j++){
-            cout<<matrixMaze[i][j]<<"\t";
+            cout<<"["<<matrixMaze[i][j]<<"] ";
         }
         cout<<endl;
     }
@@ -308,6 +322,20 @@ int generateIndividualMazeFiles(unsigned int* row, unsigned int* col, unsigned i
     return 0;
 }
 
+
+void generateMovementMatrixSave(char** matrixWithMoves, unsigned int nRows, unsigned int nCols , unsigned int n){
+    ofstream outFile;
+    outFile.open("outputFiles/SaveMovements"+to_string(n)+".dat");
+
+    for(unsigned int i=0;i<nRows;i++){
+        for (unsigned int j=0;j<nCols;j++){
+            outFile<<matrixWithMoves[i][j]<<" ";
+        }
+        outFile<<endl;
+    }
+
+}
+
 void printMatrixWithColor(char** matrixMaze,unsigned int nRows, unsigned int nCols,unsigned int x, unsigned int y){
     for(unsigned int i=0;i<nRows;i++){
         for(unsigned int j=0;j<nCols;j++){
@@ -322,14 +350,27 @@ void printMatrixWithColor(char** matrixMaze,unsigned int nRows, unsigned int nCo
         cout<<endl;
     }
 }
+void cleanMatrix(char** matrixWithMoves, unsigned int nRows, unsigned int nCols){
+    for(unsigned int i=0;i<nRows;i++){
+        for(unsigned int j=0;j<nCols;j++){
+            matrixWithMoves[i][j]='0';
+        }
+    }
+}
+
 
 /////////////////////////////////////////// start //////////////////////////////////////////////
 void start(unsigned int nRows, unsigned int nCols, unsigned int n){
-    char** matrixMaze;
-    unsigned int movementCase,currentX=0,currentY=0;
+    char** matrixMaze, **currentMovesMatrix;
+    unsigned int movementCase,inicialX=0, inicialY=0,currentX=inicialX,currentY=inicialY, currentN=0;
+    unsigned int lastX=currentX, lastY=currentY;
 
-    //alocando matriz
+    //contadores
+    unsigned int totalMoves=0,currentMatrixMoves=0;
+    //alocando matrizes
     matrixMaze=allocateMatrix(nRows,nCols);
+    currentMovesMatrix=allocateMovementSaveMatrix(nRows,nCols);
+
 
     ifstream inFile;
     inFile.open("outputFiles/Save0.dat",std::ios::in);
@@ -343,23 +384,79 @@ void start(unsigned int nRows, unsigned int nCols, unsigned int n){
 
     //fechando o arquivo
     inFile.close();
-
+    currentMovesMatrix[currentX][currentY]='1';
     while(1){
+        /////////////////////impressões//////////////////////////////////////////
         printMatrixWithColor(matrixMaze,nRows,nCols,currentX,currentY);
         cout<<endl;
+        printMaze(currentMovesMatrix,nRows,nCols);
+        cout<<endl;
+        cout<<"Position: ("<<currentX<< ","<<currentY<<")" <<endl;
+        cout<<"Total Moves: "<<totalMoves<<endl;
+        cout<<"Current Matrix Moves: "<<currentMatrixMoves<<endl;
+        //////////////////////////////ações///////////////////////////////////////
+
+        //teletransporte
+        if((currentX==0||currentY==0||currentX==nRows-1||currentY==nCols-1)&&(currentMatrixMoves>10)){
+            cout<<"Teletransporta"<<endl;
+            currentMatrixMoves=0;
+            generateMovementMatrixSave(currentMovesMatrix,nRows,nCols,currentN);
+            if(currentN==n-1){
+                currentN=0;
+            }else{
+                currentN++;
+            }
+            ifstream inFile;
+            ifstream inFile2;
+            inFile.open("outputFiles/Save"+to_string(currentN)+".dat",std::ios::in);
+            inFile2.open("outputFiles/SaveMovements"+to_string(currentN)+".dat",std::ios::in);
+            if(!inFile){
+                cerr<<"Não foi possível abrir o arquivo!"<<endl;
+                return ;
+            }
+            if(!inFile2){
+                cleanMatrix(currentMovesMatrix,nRows,nCols);
+            }else{
+                read_Maze(currentMovesMatrix,nRows,nCols,inFile2);
+            }
+            currentMovesMatrix[currentX][currentY]='1';
+            read_Maze(matrixMaze,nRows,nCols,inFile);
+
+            //fechando o arquivo
+            inFile.close();
+            inFile2.close();            
+
+        }
 
 
+
+
+        ////////////////////////////////movimentação///////////////////////////////
         
+        lastX=currentX, lastY=currentY;
         movementCase=getMovementCase(currentX,currentY,nRows,nCols);
         generateNextMove(movementCase,&currentX,&currentY);
+        currentMovesMatrix[currentX][currentY]='1';
+        totalMoves++;
+        currentMatrixMoves++;
+        do{
+            if(matrixMaze[currentX][currentY]=='#'){
+                currentMovesMatrix[currentX][currentY]='1';
+                currentX=lastX, currentY=lastY;
+                movementCase=getMovementCase(currentX,currentY,nRows,nCols);
+                generateNextMove(movementCase,&currentX,&currentY);
+                currentMovesMatrix[currentX][currentY]='1';
+            }
+        }while(matrixMaze[currentX][currentY]=='#');
         //Pausa na execução
         getchar();
         setbuf(stdin,0);
+        
     }
-
-
     //liberando matriz
     freeMatrix(matrixMaze, nRows);
+    freeMatrix(currentMovesMatrix, nRows);
+
     
 
 }
