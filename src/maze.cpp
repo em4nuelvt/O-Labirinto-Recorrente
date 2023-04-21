@@ -65,8 +65,7 @@ void writeOutputSave(char**matrixMaze, unsigned int nRows, unsigned int nCols, u
 }
 
 unsigned int getMovementCase(unsigned int currentX, unsigned int currentY, unsigned int nRows, unsigned int nCols){
-    /* 
-    Legenda de movimentos: 
+    /*Legenda de movimentos: 
     1- Vertice superior esquerdo
     2- Vertice superior direito
     3- Vertice inferior esquerdo
@@ -75,8 +74,7 @@ unsigned int getMovementCase(unsigned int currentX, unsigned int currentY, unsig
     6- Primeira Coluna
     7- Ultima linha 
     8- Ultima coluna
-    9- Meio da matriz
-     */
+    9- Meio da matriz */
     if(currentX==0 && currentY==0){
         return 1;
     } else if((currentX==0) && (currentY==(nCols-1))){
@@ -322,7 +320,6 @@ int generateIndividualMazeFiles(unsigned int* row, unsigned int* col, unsigned i
     return 0;
 }
 
-
 void generateMovementMatrixSave(char** matrixWithMoves, unsigned int nRows, unsigned int nCols , unsigned int n){
     ofstream outFile;
     outFile.open("outputFiles/SaveMovements"+to_string(n)+".dat");
@@ -358,19 +355,19 @@ void cleanMatrix(char** matrixWithMoves, unsigned int nRows, unsigned int nCols)
     }
 }
 
-
 /////////////////////////////////////////// start //////////////////////////////////////////////
 void start(unsigned int nRows, unsigned int nCols, unsigned int n){
     char** matrixMaze, **currentMovesMatrix;
     unsigned int movementCase,inicialX=0, inicialY=0,currentX=inicialX,currentY=inicialY, currentN=0;
     unsigned int lastX=currentX, lastY=currentY;
+    int valorPosicao;
+    string aux;
 
     //contadores
-    unsigned int totalMoves=0,currentMatrixMoves=0;
+    unsigned int totalMoves=0,currentMatrixMoves=0, HP=8, bag=0, bagTotal=0, dangerCount=0;
     //alocando matrizes
     matrixMaze=allocateMatrix(nRows,nCols);
     currentMovesMatrix=allocateMovementSaveMatrix(nRows,nCols);
-
 
     ifstream inFile;
     inFile.open("outputFiles/Save0.dat",std::ios::in);
@@ -387,20 +384,56 @@ void start(unsigned int nRows, unsigned int nCols, unsigned int n){
     currentMovesMatrix[currentX][currentY]='1';
     while(1){
         /////////////////////impressões//////////////////////////////////////////
+        cout<<"------------------------------------------"<<endl;
+        cout << "\033[1;36m" << "Matrix Informaation" << "\033[0m" << endl<<endl;
+        cout<<"\033[1;32m" <<"Maze "<<currentN<<":"<< "\033[0m" <<endl;
         printMatrixWithColor(matrixMaze,nRows,nCols,currentX,currentY);
         cout<<endl;
-        printMaze(currentMovesMatrix,nRows,nCols);
+        printMatrixWithColor(currentMovesMatrix,nRows,nCols,currentX,currentY);
+        //printMaze(currentMovesMatrix,nRows,nCols);
         cout<<endl;
         cout<<"Position: ("<<currentX<< ","<<currentY<<")" <<endl;
         cout<<"Total Moves: "<<totalMoves<<endl;
         cout<<"Current Matrix Moves: "<<currentMatrixMoves<<endl;
+        cout<<"------------------------------------------"<<endl;
+        cout<<"\033[1;32m" <<"Character information"<< "\033[0m" <<endl;
+        cout<<"HP: "<<HP<<endl;
+        cout<<"Bag Items: "<<bag<<endl;
+        cout<<"Total items catched: "<<bagTotal<<endl;
+        cout<<"Total dangers faced: "<<dangerCount<<endl;
+        cout<<"------------------------------------------"<<endl;
         //////////////////////////////ações///////////////////////////////////////
-
+        cout<<"\033[1;32m" <<"Battle log: "<< "\033[0m" <<endl;
+        valorPosicao=matrixMaze[currentX][currentY]-'0';
+        if(matrixMaze[currentX][currentY]=='*'){
+            HP--;
+            dangerCount++;
+            cout<<"Danger, took damage"<<endl;
+            if(HP==0){
+                cout<<"Lose - you died"<<endl;
+                break;
+            }
+        }else if((valorPosicao>=1)&&(valorPosicao<10)){
+            bag++;bagTotal++;
+            if(bag==4){
+                if(HP<10){
+                    HP++;
+                    cout<<"4 Items catched! Life increased!!! 1+ HP"<<endl;
+                    bag=0;
+                }else{
+                    bag=0;
+                    cout<<"4 Items catched! Max life, emptying bag..."<<endl;
+                }
+            }
+            aux=to_string(valorPosicao-1);
+            matrixMaze[currentX][currentY]=aux[0];
+        }
         //teletransporte
-        if((currentX==0||currentY==0||currentX==nRows-1||currentY==nCols-1)&&(currentMatrixMoves>10)){
+        if((currentX==0||currentY==0||currentX==nRows-1||currentY==nCols-1)&&(currentMatrixMoves>10)&&(n>1)){
             cout<<"Teletransporta"<<endl;
             currentMatrixMoves=0;
-            generateMovementMatrixSave(currentMovesMatrix,nRows,nCols,currentN);
+            writeOutputSave(matrixMaze, nRows, nCols,currentN); //salva a matriz trabalhada
+            generateMovementMatrixSave(currentMovesMatrix,nRows,nCols,currentN); //salva a matriz de movimentos
             if(currentN==n-1){
                 currentN=0;
             }else{
@@ -427,12 +460,7 @@ void start(unsigned int nRows, unsigned int nCols, unsigned int n){
             inFile2.close();            
 
         }
-
-
-
-
-        ////////////////////////////////movimentação///////////////////////////////
-        
+        ////////////////////////////////movimentação///////////////////////////////    
         lastX=currentX, lastY=currentY;
         movementCase=getMovementCase(currentX,currentY,nRows,nCols);
         generateNextMove(movementCase,&currentX,&currentY);
@@ -450,13 +478,10 @@ void start(unsigned int nRows, unsigned int nCols, unsigned int n){
         }while(matrixMaze[currentX][currentY]=='#');
         //Pausa na execução
         getchar();
-        setbuf(stdin,0);
+        std::setbuf(stdin,0);
         
     }
     //liberando matriz
     freeMatrix(matrixMaze, nRows);
     freeMatrix(currentMovesMatrix, nRows);
-
-    
-
 }
