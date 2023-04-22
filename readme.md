@@ -97,6 +97,7 @@ Como o problema é recorrente, sua execução e critérios de parada são defini
 O de execução do algoritmo dentro do while se orienta pelos seguintes passos a cada iteração:
 
 * Verifica se atende ao critério de vitória;
+  * Caso atenda, sai do loop.
 * Imprime o labirinto, informações sobre a matriz, informações sobre o personagem e as informações de execução;
 * Verifica a posição atual da matriz para executar alguma ação: 
   * Capturar item para adicionar a sacola;
@@ -127,7 +128,7 @@ Ao fim do loop, as seguintes informações são impressas:
 * Número de posições que não foram visitadas;
 * Total de itens capturados;
 * Total de perigos enfrentados;
-* Total de casas visitadas;
+* Total de casas visitadas (obs.: as paredes estão inclusas na contagem);
 
 ![image](https://user-images.githubusercontent.com/64996505/233803284-16cbbc24-00a3-4e8e-ab40-ab39fe808415.png)
 
