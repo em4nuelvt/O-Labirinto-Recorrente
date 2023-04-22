@@ -37,3 +37,25 @@ gerar a matriz de contagem.
 Implementei o teletransporte e também tratei o caso de não movimentar para paredes. 
 Testar as implementações de teletransporte, tentar ler as funções no hpp e entender a execução para então partir para as ações do jogo: consumir item, perder vidas, trabalhar com os contadores.
 Hoje estou cansado, mas amanha vai dar certo.
+
+
+
+
+![caso1](https://user-images.githubusercontent.com/64996505/233795540-9f95c754-6296-42fd-aa98-9d6187f15405.jpg)
+![caso2](https://user-images.githubusercontent.com/64996505/233795552-4b3398ae-1ce5-4c2e-852d-772b59cbd647.jpg)
+![caso3](https://user-images.githubusercontent.com/64996505/233795554-f1e68fa9-7fbf-4019-9077-73f1b69fce52.jpg)
+
+![caso4](https://user-images.githubusercontent.com/64996505/233795563-442eef40-bda3-4dba-9ae7-7127b17fcd92.jpg)
+![caso 5](https://user-images.githubusercontent.com/64996505/233795566-53501e2b-cc11-4e5a-9e78-861e18f05a50.jpg)
+![caso 6](https://user-images.githubusercontent.com/64996505/233795570-fc452b8f-ea42-4ab4-b8bf-d723f28f4aae.jpg)
+
+![caso 7](https://user-images.githubusercontent.com/64996505/233795578-810fe610-b5be-49d7-9ac1-e6fcb10ab2d2.jpg)
+![caso 8](https://user-images.githubusercontent.com/64996505/233795580-a68dcc69-cf39-41c1-9a3e-c216d2e8a213.jpg)
+![caso 9](https://user-images.githubusercontent.com/64996505/233795585-31de85e5-8989-492e-a0e9-635a7be6fe80.jpg)
+
+
+
+
+
+
+
