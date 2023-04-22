@@ -151,8 +151,8 @@ Entretanto, de qualquer forma, vitória e derrota dependem não somente do taman
 Há casos que não foram tratados separadamente nesse algoritmo, a exemplo de quando o personagem cair direto em um mapa cercado por paredes. Nessa situação o algoritmo pode vir a ser executado infinitamente sem nenhuma saída de execução. Como se trata de um caso muito específico, não tem prejuízo para a grande maioria dos arquivos de labirinto que forem testados nesse algoritmo.
 
 # Conclusão
-Portanto, considerando as regras de implementação e execução apresentadas, é possível observar que o resultado da execução do algoritmo pode variar bastate. Nesse caso, não somente as direções de movimentação são aleatórias, mas também o número de matrizes, dimensão delas, assim como a disposição do labirinto em cada matriz, que influenciam no tempo de execução. Para os vários testes executados, o comportamento do algoritmo variou, mas alcançou o critério de parada em menos de 1000 iterações no loop principal para matrizes de ordem inferiores a 10;
-Dessa forma, torna-se difícil estimar o custo computacional exato desse algoritmo, exatamente por esse comportamento aleatório, principalmente nas decisões de movimentação. 
+Portanto, considerando as regras de implementação e execução apresentadas, é possível observar que o resultado da execução do algoritmo pode variar bastate. Nesse caso, não somente as direções de movimentação são aleatórias, mas também o número de matrizes, dimensão delas, assim como a disposição do labirinto em cada matriz, que influenciam no tempo de execução. Para os vários testes executados, o comportamento do algoritmo variou, mas alcançou o critério de parada em menos de 1000 iterações no loop principal para matrizes de ordem inferiores a 10 nos piores casos;
+Dessa forma, torna-se difícil estimar o custo computacional exato desse algoritmo, exatamente por esse comportamento aleatório, principalmente nas decisões de movimentação. Além disso, possícvel que o algoritmo seja mais eficiente com a utilização de estruturas de dados mais elaboradas.
 
 
 # Compilação e Execução
