@@ -14,44 +14,48 @@ Após um aquecimento com um trabalho sobre caminhmaneto em matrizes, parte-se pa
 Qual o custo computacional da sua estratégia randômica? Se mostrou uma boa alternativa de execução?
 
 
+# Visão Geral
+A proposta consiste na utilização de uma estratégia de caminhamento randômica, de forma que as decisões de movimentação são geradas de forma aleatória e a execução do algoritmo persiste até encontrar algum dos critérios de parada. 
+As decisões de caminhamento são tomadas de acordo com a posição que o personagem se encontra dentro do labirinto. 
+O personagem sempre inicia na posição (0,0) da primeira matriz (0).
+As regras de execução adotadas são as seguintes:
 
-# Qual a ultima coisa que eu fiz?
-Fiz a função write output maze que salva a saída de uma matriz
+## Caminhamento dentro de cada matriz (labirinto):
+As decisões de movimentação são baseadas na posição que o personagem se encontra na matriz, pois as possibilidades de movimento vão depender se ele se encontra em algum vértice, nas laterais(primeiras e ultimas linhas e colunas) ou no centro do labirinto.
+Essa posição relativa foi subdividida em 9 casos. São eles:
 
-# Qual a ultima coisa que eu fiz? #2
-Hoje eu fiz as funções que definem em qual caso a posição corrente da matriz está para gerar possíveis caminhos que a posição pode tentar explorar.
-Fiz a função que gera qual caminho. Nessa função, deve ser chamada a função de movimentação. Entretanto as funções devem ser implementadas e substituído os couts da função "generate next move" pelas respectivas funçoes de movimentação que os couts indicam.
-as funções de movimentação ja foram declaradas no hpp e implementadas no cpp.
-é bom encontrar uma forma de testar essa movimentação e tentar startar o código para resolver seus problemas.
+    1. Vertice superior esquerdo: movimenta para a direita, para diagonal inferior direita ou para baixo.
+    
+    2. Vertice superior direito: Movimenta para esquerda, para diagonal inferior esquerda e para baixo
+    
+    3. Vertice inferior esquerdo: Movimenta para direita, para diagonal superior direita e para cima.
+      
+    4. Vertice inferior direito: Movimenta para esquerda, para diagonal superior esquerda e para cima.
+    
+    5. Primeira Linha: Movimenta para esquerda, para direita, para baixo e para as diagonais inferiores.
+    
+    6. Primeira Coluna: Movimenta para cima, para baixo, bara direita, para diagonal inferior direita e para diagonal superior direita.
+    
+    7. Ultima linha: Movimenta para direita, para a esquerda, para cima e para as diagonais superiores.
+    
+    8. Ultima coluna: Movimenta para cima, para baixo, para a esquerda, para diagonal inferior esquerda e para a diagonal superior esquerda.
+    
+    9. Meio da matriz: Movimenta em todas as direções
 
-ler o problema pra pensar na solução. escrever a ideia e so depois implementar
+    
+  Os casos estão representados a seguir:
+  
+  ![caso1](https://user-images.githubusercontent.com/64996505/233795540-9f95c754-6296-42fd-aa98-9d6187f15405.jpg)
+  ![caso2](https://user-images.githubusercontent.com/64996505/233795552-4b3398ae-1ce5-4c2e-852d-772b59cbd647.jpg)
+  ![caso3](https://user-images.githubusercontent.com/64996505/233795554-f1e68fa9-7fbf-4019-9077-73f1b69fce52.jpg)
 
-# Qual a ultima coisa que eu fiz?#3
-Hoje eu reestrturei ocódigo pra deixar a main mais limpa, coloquei as funções de movimentação sendo chamadas na função "generate next move"  e criei uma função que printa a matrix colorida em uma posição específica.
-Iniciei a função start que começa a execução do jogo, mas dentro dela por enquanto so estou testando se os movimentos gerados estão corespondendo e se estou conseguindo caminhar aleatoriamente dentro da matriz. Até então isso está funcionando. 
+  ![caso4](https://user-images.githubusercontent.com/64996505/233795563-442eef40-bda3-4dba-9ae7-7127b17fcd92.jpg)
+  ![caso 5](https://user-images.githubusercontent.com/64996505/233795566-53501e2b-cc11-4e5a-9e78-861e18f05a50.jpg)
+  ![caso 6](https://user-images.githubusercontent.com/64996505/233795570-fc452b8f-ea42-4ab4-b8bf-d723f28f4aae.jpg)
 
-preciso começar a validar o caminhamento, adquirir as vidas, tomar dano. ou seja,implementar as ações do jogo de acordo com a posição. testarofuncionamento de cada ação e se funcionar tentar implementar o teletransporte;
-gerar a matriz de contagem.
-
-# Qual a ultima coisa que eu fiz? #4
-Implementei o teletransporte e também tratei o caso de não movimentar para paredes. 
-Testar as implementações de teletransporte, tentar ler as funções no hpp e entender a execução para então partir para as ações do jogo: consumir item, perder vidas, trabalhar com os contadores.
-Hoje estou cansado, mas amanha vai dar certo.
-
-
-
-
-![caso1](https://user-images.githubusercontent.com/64996505/233795540-9f95c754-6296-42fd-aa98-9d6187f15405.jpg)
-![caso2](https://user-images.githubusercontent.com/64996505/233795552-4b3398ae-1ce5-4c2e-852d-772b59cbd647.jpg)
-![caso3](https://user-images.githubusercontent.com/64996505/233795554-f1e68fa9-7fbf-4019-9077-73f1b69fce52.jpg)
-
-![caso4](https://user-images.githubusercontent.com/64996505/233795563-442eef40-bda3-4dba-9ae7-7127b17fcd92.jpg)
-![caso 5](https://user-images.githubusercontent.com/64996505/233795566-53501e2b-cc11-4e5a-9e78-861e18f05a50.jpg)
-![caso 6](https://user-images.githubusercontent.com/64996505/233795570-fc452b8f-ea42-4ab4-b8bf-d723f28f4aae.jpg)
-
-![caso 7](https://user-images.githubusercontent.com/64996505/233795578-810fe610-b5be-49d7-9ac1-e6fcb10ab2d2.jpg)
-![caso 8](https://user-images.githubusercontent.com/64996505/233795580-a68dcc69-cf39-41c1-9a3e-c216d2e8a213.jpg)
-![caso 9](https://user-images.githubusercontent.com/64996505/233795585-31de85e5-8989-492e-a0e9-635a7be6fe80.jpg)
+  ![caso 7](https://user-images.githubusercontent.com/64996505/233795578-810fe610-b5be-49d7-9ac1-e6fcb10ab2d2.jpg)
+  ![caso 8](https://user-images.githubusercontent.com/64996505/233795580-a68dcc69-cf39-41c1-9a3e-c216d2e8a213.jpg)
+  ![caso 9](https://user-images.githubusercontent.com/64996505/233795585-31de85e5-8989-492e-a0e9-635a7be6fe80.jpg)
 
 
 
