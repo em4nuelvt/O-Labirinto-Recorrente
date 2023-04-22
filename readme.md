@@ -1,6 +1,7 @@
 # O Labirinto Recorrente
-Após um aquecimento com um trabalho sobre caminhmaneto em matrizes, parte-se para uma nova proposta de  trabalho pela disciplina de Algoritmos e Estrutura de Dados I. Considere o seguinte problema:
+Trabalho pela disciplina de Algoritmos e Estrutura de Dados I. 
 
+# O problema 
 - Um garoto se encontra perdido em um labirinto, o qual é compreendido por nós como sendo uma matriz cujas posição de sua localização é dada por um valor x,y dessa estrutura. Nesse labirinto há paredes que bloqueiam certos passos (#), perigos que consomem parte de sua vida (*) e trajetórias (valores positivos que devem ser subtraídos em 1 a cada passagem).
 
 - Quanto as paredes #, não há muito o que fazer a não ser desviar e continuar a rota. Já os perigos, a cada passada, tende a subtrair 1 de vida de um total de 10. Assim, ao ficar sem pontos de vida o algoritmo deve parar e indicar fim de jogo.
