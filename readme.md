@@ -116,6 +116,7 @@ O de execução do algoritmo dentro do while se orienta pelos seguintes passos a
 # Saída
 A cada iteração do ciclo de execução do algoritmo, é impresso as informações referentes à matriz, ao personagem e também o que deve acontecer na próxima iteração.
 Obs.: são impressas duas matrizes: uma que representa o labirinto e outra que representa o caminho que o personagem ja percorreu.
+
 ![image](https://user-images.githubusercontent.com/64996505/233803128-badbeeab-5981-4b71-ae80-32afd4e2685f.png)
 ![image](https://user-images.githubusercontent.com/64996505/233803141-9d895d35-f2d2-4f11-9b17-e7afdadfcd9c.png)
 ![image](https://user-images.githubusercontent.com/64996505/233803166-b75a91b1-cb94-4bb0-9770-e23d96b594cf.png)
