@@ -57,6 +57,15 @@ Essa posição relativa foi subdividida em 9 casos. São eles:
   ![caso 8](https://user-images.githubusercontent.com/64996505/233795580-a68dcc69-cf39-41c1-9a3e-c216d2e8a213.jpg)
   ![caso 9](https://user-images.githubusercontent.com/64996505/233795585-31de85e5-8989-492e-a0e9-635a7be6fe80.jpg)
 
+# Regra de teletransporte:
+O personagem teletransporta para outra matriz sempre que estiver nas laterais do labirinto, isto é, primeira linha, primeira coluna, ultima linha ou ultima coluna.
+Porém, o portal para teletransporte só é liberado se o personagem tiver realizado pelo menos 10 movimentos.
+    
+ ![image](https://user-images.githubusercontent.com/64996505/233798583-2048be29-d81b-4b79-9668-cb57dbf3d94a.png)
+
+A passagem de um labirinto para outro consiste em um ciclo horário. Ou seja, da primeira para segunda matriz, da segunda para terceira, ... , da ultima retorna para a primeira. 
+
+ ![ciclo de teletransporte](https://user-images.githubusercontent.com/64996505/233798511-51586485-2d1b-4885-beee-fc3762179016.png)
 
 
 
