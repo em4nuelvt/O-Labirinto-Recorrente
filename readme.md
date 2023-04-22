@@ -110,12 +110,12 @@ O de execução do algoritmo dentro do while se orienta pelos seguintes passos a
   * Define para qual labirinto o personagem será teletranportado;
   * Atualiza o contador de matriz corrente (atual)
   * Leitura da nova matriz;
-* Gera um novo movimento;
+* Gera um novo movimento aletoriamente com uma função;
       * Verificar se é parede, caso seja, entra em um ciclo até gerar um caminho do qual o personagem pode seguir;
       
 # Saída
 A cada iteração do ciclo de execução do algoritmo, é impresso as informações referentes à matriz, ao personagem e também o que deve acontecer na próxima iteração.
-
+Obs.: são impressas duas matrizes: uma que representa o labirinto e outra que representa o caminho que o personagem ja percorreu.
 ![image](https://user-images.githubusercontent.com/64996505/233803128-badbeeab-5981-4b71-ae80-32afd4e2685f.png)
 ![image](https://user-images.githubusercontent.com/64996505/233803141-9d895d35-f2d2-4f11-9b17-e7afdadfcd9c.png)
 ![image](https://user-images.githubusercontent.com/64996505/233803166-b75a91b1-cb94-4bb0-9770-e23d96b594cf.png)
@@ -124,8 +124,32 @@ A cada iteração do ciclo de execução do algoritmo, é impresso as informaç�
 ## Impressão das estatísticas de execução;
 Ao fim do loop, as seguintes informações são impressas:
 * Número de posições que não foram visitadas;
-*
+* Total de itens capturados;
+* Total de perigos enfrentados;
+* Total de casas visitadas;
 
+![image](https://user-images.githubusercontent.com/64996505/233803284-16cbbc24-00a3-4e8e-ab40-ab39fe808415.png)
+
+
+# Testes
+Durante a execução de testes foi possivel constatar que o algortimo tende a perder na maioria dos casos. Para tamanhos superiores de matriz, a chance derrota aumenta significativamente. 
+Para testar critérios de vitória em matrizes de ordem superior, foi utilizado 3 matrizes de ordem 10 no arquivo "input.data" com todas as posiçẽs sendo '0' e o seguinte resultado foi obtido para uma das execuções:
+
+![image](https://user-images.githubusercontent.com/64996505/233803673-1e52dc6f-8d74-4d00-a7b7-66e20059093c.png)
+
+Em ordem inferior, ordem 3, por exemplo, casos de vitória são mais comuns. 
+Teste com 3 matrizes de ordem 3:
+
+![image](https://user-images.githubusercontent.com/64996505/233803783-a26c5651-9c6c-4bd8-a7c0-c906633ab8dd.png)
+
+Entretanto, de qualquer forma, vitória e derrota dependem não somente do tamanho da matriz, mas da configuração dela, ou seja, das paredes e perigos e também da distribuição de itens.
+
+## Casos que não foram considerados:
+Há casos que não foram tratados separadamente nesse algoritmo, a exemplo de quando o personagem cair direto em um mapa cercado por paredes. Nessa situação o algoritmo pode vir a ser executado infinitamente sem nenhuma saída de execução. Como se trata de um caso muito específico, não tem prejuízo para a grande maioria dos arquivos de labirinto que forem testados nesse algoritmo.
+
+# Conclusão
+Portanto, considerando as regras de implementação e execução apresentadas é possível observar que o resultado da execução do algoritmo pode variar bastate. Nesse caso, não somente as direções de movimentação são aleatórias, mas também o número de matrizes, dimensão delas, assim como a disposição do labirinto em cada matriz influenciam no tempo de execução. 
+Dessa forma, torna-se difícil estimar o custo exato desse algoritmo, exatamente por esse comportamento aleatório, principalmente nas decisões de movimentação. 
 
 
 # Compilação e Execução
