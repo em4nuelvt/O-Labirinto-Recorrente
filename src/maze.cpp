@@ -367,7 +367,6 @@ unsigned int getNumberPositionsNotVisited(char** matrix,unsigned int nRows, unsi
     for(unsigned int x=0; x<n;x++){
         inFile.open("outputFiles/SaveMovements"+to_string(x)+".dat",std::ios::in);
         if(!inFile){
-            cout<<"não abriu o arquivo"<<endl;
             acm=acm + (nRows*nCols);
         }else{
             matrix=read_Maze(matrix,nRows,nCols,inFile);
@@ -389,6 +388,7 @@ unsigned int getNumberPositionsNotVisited(char** matrix,unsigned int nRows, unsi
 void start(unsigned int nRows, unsigned int nCols, unsigned int n){
     char** matrixMaze, **currentMovesMatrix;
     bool catchedItem=false;
+    bool finaliza = false;
     unsigned int movementCase,inicialX=0, inicialY=0,currentX=inicialX,currentY=inicialY, currentN=0;
     unsigned int lastX=currentX, lastY=currentY;
     int valorPosicao;
@@ -508,6 +508,12 @@ void start(unsigned int nRows, unsigned int nCols, unsigned int n){
         currentMatrixMoves++;
         do{
             if(matrixMaze[currentX][currentY]=='#'){
+                if(verifyWin(currentX,currentY,currentN,inicialX,inicialY,0,bag,catchedItem,totalMoves,cicles)){
+                    cout << "\033[1;36m" << "Nice, you win!!!" << "\033[0m" << endl<<endl;
+                    cout<<"Win"<<endl;
+                    finaliza=true;
+                    break;
+                }
                 currentMovesMatrix[currentX][currentY]='1';
                 currentX=lastX, currentY=lastY;
                 movementCase=getMovementCase(currentX,currentY,nRows,nCols);
@@ -515,9 +521,12 @@ void start(unsigned int nRows, unsigned int nCols, unsigned int n){
                 currentMovesMatrix[currentX][currentY]='1';
             }
         }while(matrixMaze[currentX][currentY]=='#');
+        if(finaliza==true){
+                break;
+        }
         //Pausa na execução
-         getchar();
-        std::setbuf(stdin,0);  
+        getchar();
+        std::setbuf(stdin,0);   
     }
 
     cout<<"------------------------------------------"<<endl;
@@ -528,6 +537,12 @@ void start(unsigned int nRows, unsigned int nCols, unsigned int n){
     cout<<"Total dangers faced: "<<dangerCount<<endl;
     cout<<"Total Moves: "<<totalMoves<<endl;
 
+
+
+    cleanMatrix(currentMovesMatrix,nRows,nCols);
+    for(unsigned int i=0;i<n;i++){
+        generateMovementMatrixSave(currentMovesMatrix,nRows,nCols,i);
+    }
     //liberando matriz
     freeMatrix(matrixMaze, nRows);
     freeMatrix(currentMovesMatrix, nRows);
