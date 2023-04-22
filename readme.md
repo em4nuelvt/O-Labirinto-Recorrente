@@ -15,7 +15,7 @@ Qual o custo computacional da sua estratégia randômica? Se mostrou uma boa alt
 
 
 # Visão Geral
-A proposta consiste na utilização de uma estratégia de caminhamento randômica, de forma que as decisões de movimentação são geradas de forma aleatória e a execução do algoritmo persiste até encontrar algum dos critérios de parada. 
+A proposta consiste na utilização de uma estratégia de caminhamento randômica em uma espécie de jogo, de forma que as decisões de movimentação são geradas de forma aleatória e a execução do algoritmo persiste até encontrar algum dos critérios de parada. 
 As decisões de caminhamento são tomadas de acordo com a posição que o personagem se encontra dentro do labirinto. 
 O personagem sempre inicia na posição (0,0) da primeira matriz (0).
 As regras de execução adotadas são as seguintes:
@@ -67,6 +67,55 @@ A passagem de um labirinto para outro consiste em um ciclo horário. Ou seja, da
 
  ![ciclo de teletransporte](https://user-images.githubusercontent.com/64996505/233798511-51586485-2d1b-4885-beee-fc3762179016.png)
  
+ ## Critérios de parada de execução:
+ 1. Vitória: para vencer o personagem precisa passar por todas as matrizes e retornar para a posição inicial sem ter pegado itens, ou seja, passando por caminhos dos quais ele ja percorreu.
+ 2. Derrota: independetemente do quando o personagem percorreu ou quais matrizes percorreu, se tiver zerado sua vida, o personagem "morre" e a execução chega ao fim, o que implica na derrota.
+ 
+ ## Vida e Itens:
+ O personagem inicia o jogo com 8 pontos de saúde (HP) e com sua mochila zerada.
+ 
+# Entrada
+A entrada consiste de um arquivo "input.data" que se encontra no diretório "dataset" do projeto. O arquivo foi gerado a partir de um apicativo gerador disponibilizado pelo professor.
+O arquivo apresenta em sua primeira linha as informações da dimensão do mapa: número de linhas de cada matriz, número de colunas de cada matriz e quantidade de matrizes. Em seguida apresenta as matrizes separadas por espaços. 
+Exemplo de entrada: 
+
+3 matrizes de dimensão 3x3:
+
+![image](https://user-images.githubusercontent.com/64996505/233800002-2e9bc4fc-bd46-4291-9413-95751656d266.png)
+
+#Implementação
+A implentação da soluão foi feita em c++ para a utilização da biblioteca fstream para leitura de arquivos. O algoritmo apresenta várias funções auxiliares de execução, mas o "cérebro" do algoritmo se encontra na função "start" que lida com toda a execução.
+
+## Leitura do arquivo
+Para fins de organização do código, no início da execução, o arquivo "input.data" é lido com a função "generateIndividualMazeFiles" e novos arquivos individuais são gerados para cada matriz. Dessa forma, arquivos com nome "Save.dat" são adicionados ao diretório outputFiles presente no projeto. Dessa forma, é possível ler os dados individuais e quando for "teletransportar" entre as matrizes, salvar as modificações sobrescrevendo o arquivo individal referente a matriz corrente.
+
+![image](https://user-images.githubusercontent.com/64996505/233801163-26c79a32-e13b-45c4-98e9-89e4bf978a8f.png)
+
+## O ciclo de execução. 
+Como o problema é recorrente, sua execução e critérios de parada são definidos numa função chamada "start". Essa função define os contadores e as variáveis referente ao personagem e apresenta um loop while que continua executando até que o personagem acabe ficando sem vidas ou que atenda aos critérios de vitória.
+O de execução do algoritmo dentro do while se orienta pelos seguintes passos a cada iteração:
+
+* Verifica se atende ao critério de vitória;
+* Imprime o labirinto, informações sobre a matriz, informações sobre o personagem e as informações de execução;
+* Verifica a posição atual da matriz para executar alguma ação: 
+  * Capturar item para adicionar a sacola;
+  * Tomar dano em caso de perigo;
+    * Se zerar a vida, sai do loop.
+  * Aumentar vida caso personagem atinja 4 items na mochila;
+  * Zerar mochila;
+  * Adminstração de contadores;
+* Verifica a condição de teletransporte. Caso possa teletraportar os seguintes passos são atendidos:
+  * Reescreve o arquivo da matriz n que está sendo trabalhada;
+  * Define para qual labirinto o personagem será teletranportado;
+  * Atualiza o contador de matriz corrente (atual)
+  * Leitura da nova matriz;
+* Gera um novo movimento;
+      * Verificar se é parede, caso seja, entra em um ciclo até gerar um caminho do qual o personagem pode seguir;
+      
+## Impressão das estatísticas de execução;
+Ao fim do loop, as seguintes informações são impressas:
+
+
 
 # Compilação e Execução
 
