@@ -85,6 +85,7 @@ Exemplo de entrada:
 
 #Implementação
 A implentação da soluão foi feita em c++ para a utilização da biblioteca fstream para leitura de arquivos. O algoritmo apresenta várias funções auxiliares de execução, mas o "cérebro" do algoritmo se encontra na função "start" que lida com toda a execução.
+Ao fim do algoritmo, será necessário informar quantas casas não foram visitadas pelo personagens. Para isso foi utilizada uma matriz que marca as posições que ja foram percorridas. Cada vez que se muda de labirinto, a matriz de caminho é salva em arquivo. Dessa forma, ao fim do algoritmo conta se a quantidade de posições não foram acessadas.
 
 ## Leitura do arquivo
 Para fins de organização do código, no início da execução, o arquivo "input.data" é lido com a função "generateIndividualMazeFiles" e novos arquivos individuais são gerados para cada matriz. Dessa forma, arquivos com nome "Save.dat" são adicionados ao diretório outputFiles presente no projeto. Dessa forma, é possível ler os dados individuais e quando for "teletransportar" entre as matrizes, salvar as modificações sobrescrevendo o arquivo individal referente a matriz corrente.
@@ -112,8 +113,18 @@ O de execução do algoritmo dentro do while se orienta pelos seguintes passos a
 * Gera um novo movimento;
       * Verificar se é parede, caso seja, entra em um ciclo até gerar um caminho do qual o personagem pode seguir;
       
+# Saída
+A cada iteração do ciclo de execução do algoritmo, é impresso as informações referentes à matriz, ao personagem e também o que deve acontecer na próxima iteração.
+
+![image](https://user-images.githubusercontent.com/64996505/233803128-badbeeab-5981-4b71-ae80-32afd4e2685f.png)
+![image](https://user-images.githubusercontent.com/64996505/233803141-9d895d35-f2d2-4f11-9b17-e7afdadfcd9c.png)
+![image](https://user-images.githubusercontent.com/64996505/233803166-b75a91b1-cb94-4bb0-9770-e23d96b594cf.png)
+
+      
 ## Impressão das estatísticas de execução;
 Ao fim do loop, as seguintes informações são impressas:
+* Número de posições que não foram visitadas;
+*
 
 
 
