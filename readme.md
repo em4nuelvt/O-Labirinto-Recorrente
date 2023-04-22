@@ -24,23 +24,23 @@ As regras de execução adotadas são as seguintes:
 As decisões de movimentação são baseadas na posição que o personagem se encontra na matriz, pois as possibilidades de movimento vão depender se ele se encontra em algum vértice, nas laterais(primeiras e ultimas linhas e colunas) ou no centro do labirinto.
 Essa posição relativa foi subdividida em 9 casos. São eles:
 
-    1. Vertice superior esquerdo: movimenta para a direita, para diagonal inferior direita ou para baixo.
-    
-    2. Vertice superior direito: Movimenta para esquerda, para diagonal inferior esquerda e para baixo
-    
-    3. Vertice inferior esquerdo: Movimenta para direita, para diagonal superior direita e para cima.
-      
-    4. Vertice inferior direito: Movimenta para esquerda, para diagonal superior esquerda e para cima.
-    
-    5. Primeira Linha: Movimenta para esquerda, para direita, para baixo e para as diagonais inferiores.
-    
-    6. Primeira Coluna: Movimenta para cima, para baixo, bara direita, para diagonal inferior direita e para diagonal superior direita.
-    
-    7. Ultima linha: Movimenta para direita, para a esquerda, para cima e para as diagonais superiores.
-    
-    8. Ultima coluna: Movimenta para cima, para baixo, para a esquerda, para diagonal inferior esquerda e para a diagonal superior esquerda.
-    
-    9. Meio da matriz: Movimenta em todas as direções
+1. Vertice superior esquerdo: movimenta para a direita, para diagonal inferior direita ou para baixo.
+
+2. Vertice superior direito: Movimenta para esquerda, para diagonal inferior esquerda e para baixo
+
+3. Vertice inferior esquerdo: Movimenta para direita, para diagonal superior direita e para cima.
+
+4. Vertice inferior direito: Movimenta para esquerda, para diagonal superior esquerda e para cima.
+
+5. Primeira Linha: Movimenta para esquerda, para direita, para baixo e para as diagonais inferiores.
+
+6. Primeira Coluna: Movimenta para cima, para baixo, bara direita, para diagonal inferior direita e para diagonal superior direita.
+
+7. Ultima linha: Movimenta para direita, para a esquerda, para cima e para as diagonais superiores.
+
+8. Ultima coluna: Movimenta para cima, para baixo, para a esquerda, para diagonal inferior esquerda e para a diagonal superior esquerda.
+
+9. Meio da matriz: Movimenta em todas as direções
 
     
   Os casos estão representados a seguir:
@@ -57,15 +57,29 @@ Essa posição relativa foi subdividida em 9 casos. São eles:
   ![caso 8](https://user-images.githubusercontent.com/64996505/233795580-a68dcc69-cf39-41c1-9a3e-c216d2e8a213.jpg)
   ![caso 9](https://user-images.githubusercontent.com/64996505/233795585-31de85e5-8989-492e-a0e9-635a7be6fe80.jpg)
 
-# Regra de teletransporte:
+## Regra de teletransporte:
 O personagem teletransporta para outra matriz sempre que estiver nas laterais do labirinto, isto é, primeira linha, primeira coluna, ultima linha ou ultima coluna.
-Porém, o portal para teletransporte só é liberado se o personagem tiver realizado pelo menos 10 movimentos.
+Porém, o portal para teletransporte só é liberado se o personagem tiver realizado pelo menos 10 movimentos. Essa decisão foi tomada para garantir que o personagem movimente-se algumas vezes no mesmo labirinto antes de partir para outro.
     
  ![image](https://user-images.githubusercontent.com/64996505/233798583-2048be29-d81b-4b79-9668-cb57dbf3d94a.png)
 
-A passagem de um labirinto para outro consiste em um ciclo horário. Ou seja, da primeira para segunda matriz, da segunda para terceira, ... , da ultima retorna para a primeira. 
+A passagem de um labirinto para outro consiste em um ciclo horário. Ou seja, da primeira para segunda matriz, da segunda para terceira, ... , da ultima retorna para a primeira. Sempre nessa ordem, como mostra a imagem:
 
  ![ciclo de teletransporte](https://user-images.githubusercontent.com/64996505/233798511-51586485-2d1b-4885-beee-fc3762179016.png)
+ 
+
+# Compilação e Execução
+
+O projeto possui um arquivo Makefile que realiza todo o procedimento de compilação e execução. Para tanto, temos as seguintes diretrizes de execução:
+
+
+| Comando                |  Função                                                                                           |                     
+| -----------------------| ------------------------------------------------------------------------------------------------- |
+|  `make clean`          | Apaga a última compilação realizada contida na pasta build                                        |
+|  `make`                | Executa a compilação do programa utilizando o gcc, e o resultado vai para a pasta build           |
+|  `make run`            | Executa o programa da pasta build após a realização da compilação                                 |
+
+Os testes de execução foram gerados aleatoriamente, partindo do código que gerou o arquivo "input.data" presente no repositório do projeto.
 
 
 
