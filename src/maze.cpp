@@ -463,6 +463,7 @@ void start(unsigned int nRows, unsigned int nCols, unsigned int n){
             }
             aux=to_string(valorPosicao-1);
             matrixMaze[currentX][currentY]=aux[0];
+            catchedItem=true;
         }else{
             catchedItem=false;
         }
@@ -525,8 +526,8 @@ void start(unsigned int nRows, unsigned int nCols, unsigned int n){
                 break;
         }
         //Pausa na execução
-        getchar();
-        std::setbuf(stdin,0);   
+/*         getchar();
+        std::setbuf(stdin,0);    */
     }
 
     cout<<"------------------------------------------"<<endl;
