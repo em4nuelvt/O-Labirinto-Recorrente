@@ -99,6 +99,7 @@ O de execução do algoritmo dentro do while se orienta pelos seguintes passos a
 
 * Verifica se atende ao critério de vitória;
   * Caso atenda, sai do loop.
+  * Obs.: O caso de vitória leva em consideração se o personagem percorreu todas as matrizes pelo menos uma vez e se voltou para a posição inicial com a sua mochila de itens vazia.
 * Imprime o labirinto, informações sobre a matriz, informações sobre o personagem e as informações de execução;
 * Verifica a posição atual da matriz para executar alguma ação: 
   * Capturar item para adicionar a sacola;
