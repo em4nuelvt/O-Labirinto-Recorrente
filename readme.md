@@ -21,7 +21,7 @@ As decisões de caminhamento são tomadas de acordo com a posição que o person
 O personagem sempre inicia na posição (0,0) da primeira matriz (0).
 As regras de execução adotadas são as seguintes:
 
-## Caminhamento dentro de cada matriz (labirinto):
+## Caminhamento dentro de cada matriz (labirinto)
 As decisões de movimentação são baseadas na posição que o personagem se encontra na matriz, pois as possibilidades de movimento vão depender se ele se encontra em algum vértice, nas laterais(primeiras e ultimas linhas e colunas) ou no centro do labirinto.
 Essa posição relativa foi subdividida em 9 casos. São eles:
 
@@ -58,7 +58,7 @@ Essa posição relativa foi subdividida em 9 casos. São eles:
   ![caso 8](https://user-images.githubusercontent.com/64996505/233795580-a68dcc69-cf39-41c1-9a3e-c216d2e8a213.jpg)
   ![caso 9](https://user-images.githubusercontent.com/64996505/233795585-31de85e5-8989-492e-a0e9-635a7be6fe80.jpg)
 
-## Regra de teletransporte:
+## Regra de teletransporte
 O personagem teletransporta para outra matriz sempre que estiver nas laterais do labirinto, isto é, primeira linha, primeira coluna, ultima linha ou ultima coluna.
 Porém, o portal para teletransporte só é liberado se o personagem tiver realizado pelo menos 10 movimentos. Essa decisão foi tomada para garantir que o personagem movimente-se algumas vezes no mesmo labirinto antes de partir para outro.
     
@@ -68,11 +68,11 @@ A passagem de um labirinto para outro consiste em um ciclo horário. Ou seja, da
 
  ![ciclo de teletransporte](https://user-images.githubusercontent.com/64996505/233798511-51586485-2d1b-4885-beee-fc3762179016.png)
  
- ## Critérios de parada de execução:
+ ## Critérios de parada de execução
  1. Vitória: para vencer o personagem precisa passar por todas as matrizes e retornar para a posição inicial sem ter pegado itens, ou seja, passando por caminhos dos quais ele ja percorreu.
  2. Derrota: independetemente do quando o personagem percorreu ou quais matrizes percorreu, se tiver zerado sua vida, o personagem "morre" e a execução chega ao fim, o que implica na derrota.
  
- ## Vida e Itens:
+ ## Vida e Itens
  O personagem inicia o jogo com 8 pontos de saúde (HP) e com sua mochila zerada.
  
 # Entrada
@@ -85,15 +85,15 @@ Exemplo de entrada:
 ![image](https://user-images.githubusercontent.com/64996505/233800002-2e9bc4fc-bd46-4291-9413-95751656d266.png)
 
 # Implementação
-A implentação da soluão foi feita em c++ para a utilização da biblioteca fstream para leitura de arquivos. O algoritmo apresenta várias funções auxiliares de execução, mas o "cérebro" do algoritmo se encontra na função "start" que lida com toda a execução.
-Ao fim do algoritmo, será necessário informar quantas casas não foram visitadas pelo personagens. Para isso foi utilizada uma matriz que marca as posições que ja foram percorridas. Cada vez que se muda de labirinto, a matriz de caminho é salva em arquivo. Dessa forma, ao fim do algoritmo conta se a quantidade de posições não foram acessadas.
+A implentação da solução foi feita em c++ somente para a utilização da biblioteca fstream para leitura de arquivos.Por isso, o código não segue os padrões de orientação a objetos. O algoritmo apresenta várias funções auxiliares de execução, mas o "cérebro" se encontra na função "start" que lida com toda a execução.
+Ao fim da execução, será necessário informar quantas casas não foram visitadas pelo personagens. Para isso foi utilizada uma matriz que marca as posições que ja foram percorridas e toda execução lida, portanto, com duas matrizes correntes: a principal e uma de marcação de caminho. Cada vez que se muda de labirinto, a matriz de caminho é salva em arquivo. Dessa forma, ao fim do algoritmo conta se a quantidade de posições não foram acessadas.
 
 ## Leitura do arquivo
 Para fins de organização do código, no início da execução, o arquivo "input.data" é lido com a função "generateIndividualMazeFiles" e novos arquivos individuais são gerados para cada matriz. Dessa forma, arquivos com nome "Save.dat" são adicionados ao diretório outputFiles presente no projeto. Dessa forma, é possível ler os dados individuais e quando for "teletransportar" entre as matrizes, salvar as modificações sobrescrevendo o arquivo individal referente a matriz corrente.
 
 ![image](https://user-images.githubusercontent.com/64996505/233801163-26c79a32-e13b-45c4-98e9-89e4bf978a8f.png)
 
-## O ciclo de execução. 
+## O ciclo de execução 
 Como o problema é recorrente, sua execução e critérios de parada são definidos numa função chamada "start". Essa função define os contadores e as variáveis referente ao personagem e apresenta um loop while que continua executando até que o personagem acabe ficando sem vidas ou que atenda aos critérios de vitória.
 O de execução do algoritmo dentro do while se orienta pelos seguintes passos a cada iteração:
 
