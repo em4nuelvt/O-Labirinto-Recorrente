@@ -167,9 +167,3 @@ O projeto possui um arquivo Makefile que realiza todo o procedimento de compila�
 |  `make run`            | Executa o programa da pasta build após a realização da compilação                                 |
 
 Os testes de execução foram gerados aleatoriamente, partindo do código que gerou o arquivo "input.data" presente no repositório do projeto.
-
-
-
-
-
-
