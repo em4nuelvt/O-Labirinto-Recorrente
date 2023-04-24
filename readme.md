@@ -124,6 +124,9 @@ Obs.: são impressas duas matrizes: uma que representa o labirinto e outra que r
 ![image](https://user-images.githubusercontent.com/64996505/233803141-9d895d35-f2d2-4f11-9b17-e7afdadfcd9c.png)
 ![image](https://user-images.githubusercontent.com/64996505/233803166-b75a91b1-cb94-4bb0-9770-e23d96b594cf.png)
 
+
+
+
       
 ## Impressão das estatísticas de execução;
 Ao fim do loop, as seguintes informações são impressas:
@@ -134,6 +137,9 @@ Ao fim do loop, as seguintes informações são impressas:
 
 ![image](https://user-images.githubusercontent.com/64996505/233803284-16cbbc24-00a3-4e8e-ab40-ab39fe808415.png)
 
+No fim também é apresentado o tempo de execução do algoritmo:
+
+![image](https://user-images.githubusercontent.com/64996505/233874282-b6015f93-fd67-47d4-b287-3f4defab1c43.png)
 
 # Testes
 Durante a execução de testes foi possivel constatar que o algortimo tende a perder na maioria dos casos. Para tamanhos superiores de matriz, a chance derrota aumenta significativamente. 
