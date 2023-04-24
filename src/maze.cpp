@@ -527,7 +527,7 @@ void start(unsigned int nRows, unsigned int nCols, unsigned int n){
         }
         //Pausa na execução
 /*         getchar();
-        std::setbuf(stdin,0);    */
+        std::setbuf(stdin,0);  */  
     }
 
     cout<<"------------------------------------------"<<endl;
