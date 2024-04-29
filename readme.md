@@ -84,6 +84,7 @@ Exemplo de entrada:
 
 ![image](https://user-images.githubusercontent.com/64996505/233800002-2e9bc4fc-bd46-4291-9413-95751656d266.png)
 
+
 # Implementação
 A implentação da solução foi feita em c++ somente para a utilização da biblioteca fstream para leitura de arquivos.Por isso, o código não segue os padrões de orientação a objetos. O algoritmo apresenta várias funções auxiliares de execução, mas o "cérebro" se encontra na função "start" que lida com toda a execução.
 Ao fim da execução, será necessário informar quantas casas não foram visitadas pelo personagens. Para isso foi utilizada uma matriz que marca as posições que ja foram percorridas e toda execução lida, portanto, com duas matrizes correntes: a principal e uma de marcação de caminho. Cada vez que se muda de labirinto, a matriz de caminho é salva em arquivo. Dessa forma, ao fim do algoritmo conta se a quantidade de posições não foram acessadas.

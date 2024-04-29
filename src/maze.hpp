@@ -4,7 +4,6 @@
 #include <fstream>
 #include <string>
 #include <random>
-#include <string>
 using namespace std;
 
 char** read_Maze(char** matrixMaze, unsigned int nRows, unsigned int nCols, ifstream &inFile);
