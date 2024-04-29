@@ -89,6 +89,7 @@ Exemplo de entrada:
 A implentação da solução foi feita em c++ somente para a utilização da biblioteca fstream para leitura de arquivos.Por isso, o código não segue os padrões de orientação a objetos. O algoritmo apresenta várias funções auxiliares de execução, mas o "cérebro" se encontra na função "start" que lida com toda a execução.
 Ao fim da execução, será necessário informar quantas casas não foram visitadas pelo personagens. Para isso foi utilizada uma matriz que marca as posições que ja foram percorridas e toda execução lida, portanto, com duas matrizes correntes: a principal e uma de marcação de caminho. Cada vez que se muda de labirinto, a matriz de caminho é salva em arquivo. Dessa forma, ao fim do algoritmo conta se a quantidade de posições não foram acessadas.
 
+
 ## Leitura do arquivo
 Para fins de organização do código, no início da execução, o arquivo "input.data" é lido com a função "generateIndividualMazeFiles" e novos arquivos individuais são gerados para cada matriz. Dessa forma, arquivos com nome "Save.dat" são adicionados ao diretório outputFiles presente no projeto. Dessa forma, é possível ler os dados individuais e quando for "teletransportar" entre as matrizes, salvar as modificações sobrescrevendo o arquivo individal referente a matriz corrente.
 
